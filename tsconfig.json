@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "sourceMap": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "paths": {
+      "@shared/*": ["./src/shared/*"],
+      "@app/*": ["./src/renderer/app/*"],
+      "@core/*": ["./src/renderer/core/*"],
+      "@engine/*": ["./src/renderer/engine/*"],
+      "@geometry/*": ["./src/renderer/geometry/*"],
+      "@features/*": ["./src/renderer/features/*"],
+      "@state/*": ["./src/renderer/state/*"],
+      "@ui/*": ["./src/renderer/ui/*"],
+      "@styles/*": ["./src/renderer/styles/*"]
+    }
+  },
+  "include": ["src/**/*", "*.ts", "*.mts"]
+}
