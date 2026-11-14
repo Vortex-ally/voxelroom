@@ -1,15 +1,9 @@
 /**
- * Root React component.
- * TEMPORARY: a placeholder that only proves React renders inside Electron.
- * It will be replaced by the editor layout in a later step.
+ * Root React component: renders the VoxelRoom editor shell.
  */
+import { EditorLayout } from '../components/layout/EditorLayout';
 import './App.css';
 
 export function App() {
-  return (
-    <main className="integration-check">
-      <h1 className="integration-check__title">VoxelRoom</h1>
-      <p className="integration-check__status">React renderer is working.</p>
-    </main>
-  );
+  return <EditorLayout />;
 }

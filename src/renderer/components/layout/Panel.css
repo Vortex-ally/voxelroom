@@ -1,0 +1,103 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--bg-panel);
+}
+
+.panel--left {
+  border-right: 1px solid var(--border);
+}
+
+.panel--right {
+  border-left: 1px solid var(--border);
+}
+
+.panel__header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  height: var(--panel-header-h);
+  padding: 0 var(--space-2) 0 var(--space-4);
+  background: var(--bg-panel-header);
+  border-bottom: 1px solid var(--border);
+}
+
+.panel__title {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.panel__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Collapsed rail */
+.panel--rail {
+  width: var(--rail-w);
+}
+
+.panel__rail-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  height: 100%;
+  padding: var(--space-3) 0;
+  color: var(--text-muted);
+}
+
+.panel__rail-button:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.panel__rail-label {
+  writing-mode: vertical-rl;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panel--left .panel__rail-label {
+  transform: rotate(180deg);
+}
+
+/* Shared small square icon button used in headers and bars */
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.icon-button:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.icon-button[aria-pressed='true'] {
+  color: var(--accent-strong);
+}

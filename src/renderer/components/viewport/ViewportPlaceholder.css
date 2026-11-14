@@ -1,0 +1,342 @@
+.viewport {
+  container-type: size;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    var(--viewport-bg) 55%,
+    var(--viewport-vignette) 100%
+  );
+}
+
+.viewport__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.viewport__svg {
+  display: block;
+}
+
+/* Grid and world axes */
+.vp-grid__minor {
+  stroke: var(--grid-minor);
+  stroke-width: 1;
+}
+.vp-grid__major {
+  stroke: var(--grid-major);
+  stroke-width: 1;
+}
+.vp-axis {
+  stroke-width: 1.4;
+  opacity: 0.75;
+}
+.vp-axis--x {
+  stroke: var(--axis-x);
+}
+.vp-axis--y {
+  stroke: var(--axis-y);
+}
+.vp-axis--z {
+  stroke: var(--axis-z);
+}
+.vp-origin {
+  fill: var(--viewport-bg);
+  stroke: var(--text-muted);
+  stroke-width: 1.2;
+}
+
+/* Meshes */
+.vp-mesh {
+  --vp-face: var(--mesh-fill);
+  --vp-edge: var(--mesh-edge);
+}
+.vp-mesh:hover {
+  --vp-edge: var(--accent-hover);
+}
+.vp-mesh--selected {
+  --vp-face: color-mix(in srgb, var(--accent) 45%, var(--mesh-fill));
+  --vp-edge: var(--accent-strong);
+}
+.vp-mesh__face {
+  stroke: none;
+  fill-opacity: 0.92;
+}
+.vp-mesh__edge {
+  stroke: var(--vp-edge);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.vp-mesh--selected .vp-mesh__edge {
+  stroke-width: 1.6;
+}
+.vp-mesh__hidden {
+  stroke: var(--mesh-edge-hidden);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.vp-mesh--selected .vp-mesh__hidden {
+  stroke: var(--accent-border);
+}
+
+/* Camera and light glyphs */
+.vp-helper {
+  --vp-helper: var(--helper);
+  stroke: var(--vp-helper);
+  stroke-width: 1.2;
+  fill: none;
+  stroke-linejoin: round;
+}
+.vp-helper:hover {
+  --vp-helper: var(--text);
+}
+.vp-helper--directionalLight,
+.vp-helper--pointLight {
+  --vp-helper: #d9a441;
+}
+.vp-helper--selected {
+  --vp-helper: var(--accent-strong);
+  stroke-width: 1.6;
+}
+.vp-helper__fill {
+  fill: color-mix(in srgb, var(--vp-helper) 18%, transparent);
+}
+.vp-helper__solid {
+  fill: var(--vp-helper);
+  stroke: none;
+}
+.vp-helper__ray {
+  stroke-dasharray: 4 3;
+}
+.vp-helper__drop {
+  stroke: var(--text-faint);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.vp-helper__ground {
+  stroke: var(--text-faint);
+  stroke-width: 1;
+}
+.vp-helper__hit {
+  fill: transparent;
+  stroke: none;
+}
+.vp-helper__label {
+  font-size: var(--text-sm);
+  fill: var(--text-muted);
+  stroke: none;
+  pointer-events: none;
+}
+.vp-helper--selected .vp-helper__label {
+  fill: var(--accent-strong);
+  font-weight: 600;
+}
+
+/* Selection */
+.vp-selection {
+  pointer-events: none;
+}
+.vp-brackets {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.vp-gizmo {
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.vp-gizmo__axis--x {
+  stroke: var(--axis-x);
+  fill: var(--axis-x);
+}
+.vp-gizmo__axis--y {
+  stroke: var(--axis-y);
+  fill: var(--axis-y);
+}
+.vp-gizmo__axis--z {
+  stroke: var(--axis-z);
+  fill: var(--axis-z);
+}
+.vp-gizmo__ring {
+  fill: none;
+  stroke-width: 1.8;
+}
+.vp-gizmo__outer {
+  fill: none;
+  stroke: var(--text-faint);
+  stroke-width: 1;
+}
+.vp-gizmo__center {
+  fill: var(--accent);
+  stroke: var(--viewport-bg);
+  stroke-width: 1.5;
+}
+
+/* HTML overlays */
+.viewport__overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+.viewport__overlay--top-left {
+  top: var(--space-4);
+  left: var(--space-4);
+}
+.viewport__overlay--top-right {
+  top: var(--space-4);
+  right: var(--space-4);
+}
+.viewport__overlay--bottom-left {
+  bottom: var(--space-4);
+  left: var(--space-4);
+}
+.viewport__overlay--bottom-right {
+  bottom: var(--space-4);
+  right: var(--space-4);
+  left: 88px;
+  justify-content: flex-end;
+}
+
+.vp-chip {
+  height: 20px;
+  padding: 0 var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg-panel) 85%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.vp-chip--strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.vp-chip--accent {
+  color: var(--accent-strong);
+  border-color: var(--accent-border);
+  background: var(--accent-softer);
+  pointer-events: auto;
+}
+
+.vp-card {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-1);
+  min-width: 200px;
+  padding: var(--space-4) var(--space-5);
+  background: color-mix(in srgb, var(--bg-panel) 90%, transparent);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+}
+.vp-card--empty {
+  min-width: 0;
+  color: var(--text-faint);
+  border-left-color: var(--border-strong);
+}
+.vp-card__title {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+.vp-card__kind {
+  color: var(--text-faint);
+  margin-bottom: var(--space-2);
+}
+.vp-card__grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+}
+.vp-card__grid dt {
+  color: var(--text-faint);
+}
+.vp-card__grid dd {
+  margin: 0;
+  color: var(--text);
+  text-align: right;
+  white-space: pre;
+}
+.vp-card__unit {
+  color: var(--text-faint);
+}
+
+.axis-gizmo__bg {
+  fill: color-mix(in srgb, var(--bg-panel) 70%, transparent);
+  stroke: var(--border);
+}
+.axis-gizmo__axis line {
+  stroke-width: 2;
+}
+.axis-gizmo__axis text {
+  font-size: 8px;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: #fff;
+}
+.axis-gizmo__axis--x {
+  stroke: var(--axis-x);
+  fill: var(--axis-x);
+}
+.axis-gizmo__axis--y {
+  stroke: var(--axis-y);
+  fill: var(--axis-y);
+}
+.axis-gizmo__axis--z {
+  stroke: var(--axis-z);
+  fill: var(--axis-z);
+}
+.axis-gizmo__axis circle {
+  stroke: none;
+}
+
+.vp-hints {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-faint);
+  background: color-mix(in srgb, var(--bg-panel) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.vp-hints span {
+  white-space: nowrap;
+}
+.vp-hints kbd {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding: 0 4px;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+}
+.vp-hints__tool {
+  color: var(--accent-strong);
+}
+.vp-hints__tool kbd {
+  color: var(--accent-strong);
+  border-color: var(--accent-border);
+}
+
+@media (max-width: 1180px) {
+  .vp-hints span:nth-child(2) {
+    display: none;
+  }
+}
+
+/* Narrow viewport: move the selection card below the view chips. */
+@container (max-width: 560px) {
+  .viewport__overlay--top-right {
+    top: 36px;
+  }
+}

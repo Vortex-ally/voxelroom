@@ -1,0 +1,133 @@
+/*
+ * Design tokens. Components use only these variables, never raw colors,
+ * so both themes stay consistent. Dark is the default.
+ */
+
+:root {
+  /* Typography */
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Ubuntu,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Cascadia Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+  --text-xs: 10px;
+  --text-sm: 11px;
+  --text-md: 12px;
+  --text-lg: 13px;
+
+  /* Spacing (4px grid) and sizing */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  --topbar-h: 34px;
+  --toolbar-h: 36px;
+  --statusbar-h: 24px;
+  --panel-header-h: 28px;
+  --row-h: 24px;
+  --sidebar-left-w: 248px;
+  --sidebar-right-w: 288px;
+  --rail-w: 28px;
+
+  /* Axis colors (shared by both themes, tuned per theme below) */
+  --axis-x: #e5534b;
+  --axis-y: #57ab5a;
+  --axis-z: #4a8fe7;
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg-app: #131317;
+  --bg-chrome: #18181d;
+  --bg-panel: #1c1c21;
+  --bg-panel-header: #202026;
+  --bg-input: #131317;
+  --bg-hover: #26262d;
+  --bg-active: #2c2c34;
+  --bg-popover: #222229;
+
+  --border: #2a2a31;
+  --border-strong: #383841;
+  --border-input: #33333b;
+
+  --text: #e3e3e8;
+  --text-muted: #a1a1ac;
+  --text-faint: #6c6c78;
+  --text-on-accent: #ffffff;
+
+  --accent: #8b6cf6;
+  --accent-hover: #9d83f8;
+  --accent-strong: #a891ff;
+  --accent-soft: rgb(139 108 246 / 0.16);
+  --accent-softer: rgb(139 108 246 / 0.09);
+  --accent-border: rgb(139 108 246 / 0.55);
+
+  --viewport-bg: #17171c;
+  --viewport-vignette: #111115;
+  --grid-minor: #24242b;
+  --grid-major: #31313a;
+  --mesh-fill: #8a8a96;
+  --mesh-shadow: #2a2a31;
+  --mesh-edge: #c9c9d3;
+  --mesh-edge-hidden: #4a4a55;
+  --helper: #b4b4c0;
+
+  --shadow-popover: 0 8px 24px rgb(0 0 0 / 0.45), 0 0 0 1px rgb(0 0 0 / 0.3);
+  --focus-ring: 0 0 0 1px var(--accent), 0 0 0 3px rgb(139 108 246 / 0.3);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg-app: #dcdce2;
+  --bg-chrome: #e6e6eb;
+  --bg-panel: #f3f3f6;
+  --bg-panel-header: #eaeaef;
+  --bg-input: #ffffff;
+  --bg-hover: #e1e1e8;
+  --bg-active: #d7d7df;
+  --bg-popover: #fbfbfd;
+
+  --border: #d0d0d8;
+  --border-strong: #babac5;
+  --border-input: #c7c7d1;
+
+  --text: #1d1d23;
+  --text-muted: #55555f;
+  --text-faint: #8a8a96;
+  --text-on-accent: #ffffff;
+
+  --accent: #6c47e0;
+  --accent-hover: #7a58e8;
+  --accent-strong: #5a36cf;
+  --accent-soft: rgb(108 71 224 / 0.14);
+  --accent-softer: rgb(108 71 224 / 0.07);
+  --accent-border: rgb(108 71 224 / 0.5);
+
+  --axis-x: #d23f36;
+  --axis-y: #3d8f3f;
+  --axis-z: #2f72cf;
+
+  --viewport-bg: #ececf0;
+  --viewport-vignette: #dfdfe5;
+  --grid-minor: #dcdce3;
+  --grid-major: #c4c4ce;
+  --mesh-fill: #c3c3cc;
+  --mesh-shadow: #7d7d89;
+  --mesh-edge: #3a3a44;
+  --mesh-edge-hidden: #b3b3be;
+  --helper: #55555f;
+
+  --shadow-popover:
+    0 8px 24px rgb(20 20 40 / 0.16), 0 0 0 1px rgb(20 20 40 / 0.08);
+  --focus-ring: 0 0 0 1px var(--accent), 0 0 0 3px rgb(108 71 224 / 0.25);
+}
